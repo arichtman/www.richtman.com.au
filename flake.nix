@@ -10,12 +10,10 @@
           };
           poetryEnv = pkgs.poetry2nix.mkPoetryEnv {
             projectDir = ./.;
-            editablePackageSources = {
-            };
           };
-      in {
-        devShell = pkgs.mkShell {
-          buildInputs = [ poetryEnv pkgs.zola ];
+      in with pkgs; {
+        devShell = mkShell {
+          buildInputs = [ poetryEnv zola ];
       };
     }
   );
